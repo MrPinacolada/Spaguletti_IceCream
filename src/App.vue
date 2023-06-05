@@ -19,5 +19,7 @@ body {
   border: none;
   text-decoration: none;
   overflow-x: hidden;
+  width: 100%;
+  height: 100%;
 }
 </style>
