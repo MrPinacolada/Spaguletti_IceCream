@@ -5,6 +5,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import { defineComponent, ref, watch } from 'vue'
 import MainPage from './components/MainPage.vue'
+import 'animate.css';
 export default defineComponent({
   components: { MainPage },
   setup() {

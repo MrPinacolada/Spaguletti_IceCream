@@ -10,9 +10,9 @@
       autoplay
     ></lottie-player>
   </div>
-  <div class="bodyContainer">
+  <div class="bodyContainer" v-if="!ShowLoadingScreen">
     <header>
-      <div class="HeaderContainer">
+      <div class="HeaderContainer animate__animated animate__slideInDown">
         <h2 id="Spaguletti">SPAGULETTI</h2>
         <span>SHOPS</span>
         <span>ABOUT</span>
@@ -20,33 +20,58 @@
         <span id="lastSpanHeader">CONTACT US</span>
       </div>
     </header>
-    <div class="betweenContainer">
+    <div class="betweenContainer animate__animated animate__slideInDown">
       <img id="SPlogo" src="@/assets/Header/fotor_2023-6-5_16_4_7.png" alt="Spaguletti LOGO" />
     </div>
     <div class="scoop-scoop"></div>
-    <div class="pageContainer">
-      <div class="AboutUS">
-        <h3>ABOUT US</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis perspiciatis mollitia
-        </p>
+    <div class="pageContainer animate__animated animate__slideInUp">
+      <div class="AboutUSWrapper">
+        <div class="AboutUS">
+          <h3>ABOUT US</h3>
+
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure culpa dicta praesentium
+            sunt, fuga quidem fugit natus laboriosam quod aperiam necessitatibus rerum, dolore
+            voluptas quis at unde voluptates ut! <br /><br />
+            Quaerat ut dolorem doloribus, inventore quasi voluptatem praesentium deserunt,
+            accusantium mollitia, eius laboriosam pariatur animi cupiditate sed quae provident. Hic,
+            labore.
+          </p>
+        </div>
+      </div>
+      <div class="shopsWrapper">
+        <div class="shopsicecream">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam fuga reiciendis quod nam
+            tenetur consequatur incidunt sit vero numquam saepe!
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import { defineComponent, ref, watch } from 'vue'
+import { defineComponent, onMounted, ref, watch } from 'vue'
 export default defineComponent({
   components: {},
   setup() {
-    let ShowLoadingScreen = ref(false)
+    let ShowLoadingScreen = ref(true)
+    let HandlePageLoaded = () => {
+      setTimeout(() => {
+        ShowLoadingScreen.value = false
+      }, 2500)
+    }
+    onMounted(() => {
+      HandlePageLoaded()
+    })
     return { ShowLoadingScreen }
   }
 })
 </script>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 @media only screen and (max-width: 768px) {
   .iceCreamContainer {
@@ -61,7 +86,6 @@ export default defineComponent({
     display: grid;
     align-items: center;
     justify-items: center;
-    font-family: 'Anton', sans-serif;
     grid-template-rows: 0.23fr 1fr;
     overflow-x: hidden;
   }
@@ -90,6 +114,7 @@ export default defineComponent({
     position: fixed;
     top: 0;
     z-index: 100;
+    font-family: 'Anton', sans-serif;
   }
   #Spaguletti {
     grid-column: span 5;
@@ -125,7 +150,7 @@ export default defineComponent({
     justify-items: center;
     position: relative;
   }
-  
+
   .scoop-scoop {
     transform: scale(4) rotate(7deg);
     content: '';
@@ -134,14 +159,68 @@ export default defineComponent({
     height: 44px;
     z-index: 15;
     position: relative;
+    animation: slide-in-top 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
+  @keyframes slide-in-top {
+    0% {
+      /* transform: translateY(-1000px); */
+      opacity: 0;
+    }
+    100% {
+      transform: scale(4) rotate(7deg);
+      opacity: 1;
+    }
+  }
+
   .AboutUS {
+    /* display: grid; */
+    margin: auto;
+    text-align: center;
+    width: 90%;
+    height: 300px;
+    margin-top: 60px;
+    color: white;
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: 1px;
+    font-family: 'Roboto', sans-serif;
+    background-color: black;
+  }
+  .AboutUSWrapper {
+    width: 100%;
+    height: fit-content;
+    background-color: black;
+  }
+  .shopsWrapper{
+    background: url(@/assets/Body/bits-bg.svg) no-repeat 50%;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    padding: 50px;
+    margin-top: 20px;
+  }
+  .shopsWrapper::before{
+    content: '';
+    background-image: url(@/assets/Body/wavy-top.svg);
+    width: 100%;
+    background-repeat: no-repeat;
+    height: 100%;
+    position: absolute;
+    top: -10%;
+  }
+  .shopsicecream {
+    width: 80%;
+    height: fit-content;
+    background-color: whitesmoke;
+    border-radius: 25px;
     display: grid;
     align-items: center;
     justify-items: center;
-    width: 100%;
-    height: 300px;
-    margin-top: 50px;
+    margin: auto;
+    padding: 10px;
   }
 }
 .backGroung {
@@ -150,6 +229,9 @@ export default defineComponent({
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgb(24, 146, 221, 0.7);
+  background: url(@/assets/Body/loadingBack.svg) no-repeat 50%;
+  background-position: center center;
+  background-size: cover;
+  animation: borderadius 2s ease-in-out;
 }
 </style>
