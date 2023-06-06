@@ -129,7 +129,7 @@ export default defineComponent({
   .scoop-scoop {
     transform: scale(4) rotate(7deg);
     content: '';
-    background: url(/Spaguletti/src/assets/Body/scoops-separator.svg) no-repeat 50%;
+    background: url(@/assets/Body/scoops-separator.svg) no-repeat 50%;
     width: 100%;
     height: 44px;
     z-index: 15;
