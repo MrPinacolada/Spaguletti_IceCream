@@ -198,8 +198,7 @@ export default defineComponent({
     width: 100%;
     height: 100%;
     position: relative;
-    top: 0;
-    padding: 50px;
+    top: -15%;
     margin-top: 20px;
   }
   .shopsWrapper::before{
@@ -221,6 +220,7 @@ export default defineComponent({
     justify-items: center;
     margin: auto;
     padding: 10px;
+    margin-top: 40px;
   }
 }
 .backGroung {
