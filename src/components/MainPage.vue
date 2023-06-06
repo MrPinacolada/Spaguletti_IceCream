@@ -1,6 +1,6 @@
 <template>
-  <div v-if="ShowLoadingScreen" class="backGroung"></div>
-  <div class="iceCreamContainer" v-if="ShowLoadingScreen">
+  <div v-show="ShowLoadingScreen" class="backGroung"></div>
+  <div class="iceCreamContainer" v-show="ShowLoadingScreen">
     <lottie-player
       src="https://assets6.lottiefiles.com/private_files/lf30_t8nkvzcj.json"
       background="transparent"
@@ -10,7 +10,7 @@
       autoplay
     ></lottie-player>
   </div>
-  <div class="bodyContainer" v-if="!ShowLoadingScreen">
+  <div class="bodyContainer" v-show="!ShowLoadingScreen">
     <header>
       <div class="HeaderContainer animate__animated animate__slideInDown">
         <h2 id="Spaguletti">SPAGULETTI</h2>
@@ -28,7 +28,6 @@
       <div class="AboutUSWrapper">
         <div class="AboutUS">
           <h3>ABOUT US</h3>
-
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure culpa dicta praesentium
             sunt, fuga quidem fugit natus laboriosam quod aperiam necessitatibus rerum, dolore
@@ -41,11 +40,32 @@
       </div>
       <div class="shopsWrapper">
         <div class="shopsicecream">
+          <img src="@/assets/Body/288870800_561000605625699_2838917795971859607_n.jpg" alt="" />
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam fuga reiciendis quod nam
-            tenetur consequatur incidunt sit vero numquam saepe!
+            Lorem ipsum dolor ctr amet consectetur adipisicing elit. <br />
+            Opening times: <br />
+            <strong
+              >Tuesday to Sunday — <br />
+              12 midday to 10pm <br />Monday — Closed</strong
+            ><br />
           </p>
+          <p>
+            Find us at: <br />
+            <strong>Kostava 21, 1 Vashlovani St</strong>
+          </p>
+          <a
+            href="https://goo.gl/maps/mwenWCDLfkWvHkke9"
+            target="_blank"
+            class="shopButt mapShopButt"
+            >Visit the Spaguletti</a
+          >
         </div>
+        <a
+          href="/"
+          target="_blank"
+          class="shopButt menuShopButt"
+          >download our menu</a
+        >
       </div>
     </div>
   </div>
@@ -191,24 +211,28 @@ export default defineComponent({
     height: fit-content;
     background-color: black;
   }
-  .shopsWrapper{
+  .shopsWrapper {
     background: url(@/assets/Body/bits-bg.svg) no-repeat 50%;
     background-position: center center;
     background-size: cover;
     width: 100%;
     height: 100%;
     position: relative;
-    top: -15%;
+    top: 0;
     margin-top: 20px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    gap: 20px;
   }
-  .shopsWrapper::before{
+  .shopsWrapper::before {
     content: '';
     background-image: url(@/assets/Body/wavy-top.svg);
     width: 100%;
     background-repeat: no-repeat;
     height: 100%;
     position: absolute;
-    top: -10%;
+    top: -5%;
   }
   .shopsicecream {
     width: 80%;
@@ -221,6 +245,42 @@ export default defineComponent({
     margin: auto;
     padding: 10px;
     margin-top: 40px;
+    text-align: center;
+  }
+  .shopsicecream > img {
+    max-width: 300px;
+    max-height: 100%;
+    border-radius: 25px;
+  }
+  .shopButt {
+    text-decoration: none;
+    color: black;
+    background-position: 97%;
+    background-size: 8%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-color: #00a094;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: futura-pt-condensed, sans-serif;
+    font-weight: 700;
+    font-size: 1em;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    padding: 0.8em 3em;
+    border: 0;
+    border-radius: 0.5em;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+  }
+  .mapShopButt {
+    background-image: url(@/assets/Body/marker.svg);
+  }
+  .menuShopButt{
+    background-image: url(@/assets/Body/arrow.svg);
+
   }
 }
 .backGroung {
