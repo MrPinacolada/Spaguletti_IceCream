@@ -4,6 +4,9 @@
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]

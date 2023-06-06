@@ -60,12 +60,14 @@
             >Visit the Spaguletti</a
           >
         </div>
-        <a
-          href="/"
-          target="_blank"
-          class="shopButt menuShopButt"
-          >download our menu</a
-        >
+        <a href="/" target="_blank" class="shopButt menuShopButt">download our menu</a>
+        <swiper :pagination="true" :modules="modules" class="mySwiper">
+          <swiper-slide><img src="@/assets/Body/120779949.jpg" alt="" /></swiper-slide>
+          <swiper-slide><img src="@/assets/Body/119452030.jpg" alt="" /></swiper-slide>
+          <swiper-slide><img src="@/assets/Body/116708427.jpg" alt="" /></swiper-slide>
+          <swiper-slide><img src="@/assets/Body/116708427.jpg" alt="" /></swiper-slide>
+          <swiper-slide><img src="@/assets/Body/116708427.jpg" alt="" /></swiper-slide>
+        </swiper>
       </div>
     </div>
   </div>
@@ -73,8 +75,17 @@
 <script lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import { defineComponent, onMounted, ref, watch } from 'vue'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Pagination } from 'swiper'
+import SwiperCore from 'swiper'
+SwiperCore.use([Pagination])
+import 'swiper/css/pagination'
+import 'swiper/css'
 export default defineComponent({
-  components: {},
+  components: {
+    Swiper,
+    SwiperSlide
+  },
   setup() {
     let ShowLoadingScreen = ref(true)
     let HandlePageLoaded = () => {
@@ -85,7 +96,7 @@ export default defineComponent({
     onMounted(() => {
       HandlePageLoaded()
     })
-    return { ShowLoadingScreen }
+    return { ShowLoadingScreen, modules: [Pagination] }
   }
 })
 </script>
@@ -94,6 +105,27 @@ export default defineComponent({
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 @media only screen and (max-width: 768px) {
+  .swiper {
+    width: 95%;
+    height: 90%;
+  }
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
   .iceCreamContainer {
     display: grid;
     align-items: center;
@@ -230,7 +262,7 @@ export default defineComponent({
     background-image: url(@/assets/Body/wavy-top.svg);
     width: 100%;
     background-repeat: no-repeat;
-    height: 100%;
+    height: 100px;
     position: absolute;
     top: -5%;
   }
@@ -278,9 +310,8 @@ export default defineComponent({
   .mapShopButt {
     background-image: url(@/assets/Body/marker.svg);
   }
-  .menuShopButt{
+  .menuShopButt {
     background-image: url(@/assets/Body/arrow.svg);
-
   }
 }
 .backGroung {

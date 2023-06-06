@@ -1,5 +1,10 @@
 {
   "files": [],
+  "ts-node": {
+		"transpileOnly": true,
+		"files": true,
+		"experimentalResolver": true
+	},
   "references": [
     {
       "path": "./tsconfig.node.json"
