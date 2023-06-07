@@ -204,21 +204,21 @@ export default defineComponent({
     let mesMessage = ref()
     let iceCreamFlavorsinView = ref()
     let flavours = [
-      'assets/Body/gridicetable/chocolate.svg',
-      'assets/Body/gridicetable/honey.svg',
-      'assets/Body/gridicetable/mint.svg',
-      'assets/Body/gridicetable/chocolate.svg',
-      'assets/Body/gridicetable/honey.svg',
-      'assets/Body/gridicetable/mint.svg',
-      'assets/Body/gridicetable/chocolate.svg',
-      'assets/Body/gridicetable/honey.svg',
-      'assets/Body/gridicetable/mint.svg',
-      'assets/Body/gridicetable/chocolate.svg',
-      'assets/Body/gridicetable/honey.svg',
-      'assets/Body/gridicetable/mint.svg',
-      'assets/Body/gridicetable/chocolate.svg',
-      'assets/Body/gridicetable/honey.svg',
-      'assets/Body/gridicetable/mint.svg'
+      './assets/Body/gridicetable/chocolate.svg',
+      './assets/Body/gridicetable/honey.svg',
+      './assets/Body/gridicetable/mint.svg',
+      './assets/Body/gridicetable/chocolate.svg',
+      './assets/Body/gridicetable/honey.svg',
+      './assets/Body/gridicetable/mint.svg',
+      './assets/Body/gridicetable/chocolate.svg',
+      './assets/Body/gridicetable/honey.svg',
+      './assets/Body/gridicetable/mint.svg',
+      './assets/Body/gridicetable/chocolate.svg',
+      './assets/Body/gridicetable/honey.svg',
+      './assets/Body/gridicetable/mint.svg',
+      './assets/Body/gridicetable/chocolate.svg',
+      './assets/Body/gridicetable/honey.svg',
+      './assets/Body/gridicetable/mint.svg'
     ]
     let onIntersectionObserverIceCups = ([{ isIntersecting }]: any) => {
       if (isIntersecting) {
