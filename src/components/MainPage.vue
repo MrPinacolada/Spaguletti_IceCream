@@ -150,14 +150,8 @@
           <p>Give us a tweet, check out our latest updates</p>
           <p>or send us a message below</p>
           <div class="socialmedia-icons">
-            <img
-              src="@/assets/Body/instagram_logo_icon.svg"
-              alt=""
-            />
-            <img
-              src="@/assets/Body/whatsapp_logo_icon.svg"
-              alt=""
-            />
+            <img src="@/assets/Body/instagram_logo_icon.svg" alt="" />
+            <img src="@/assets/Body/whatsapp_logo_icon.svg" alt="" />
             <img src="@/assets/Body/twitter_logo_icon.svg" alt="" />
           </div>
           <form class="getintouch-form">
@@ -210,21 +204,21 @@ export default defineComponent({
     let mesMessage = ref()
     let iceCreamFlavorsinView = ref()
     let flavours = [
-      '/assets/Body/gridicetable/chocolate.svg',
-      '/assets/Body/gridicetable/honey.svg',
-      '/assets/Body/gridicetable/mint.svg',
-      '/assets/Body/gridicetable/chocolate.svg',
-      '/assets/Body/gridicetable/honey.svg',
-      '/assets/Body/gridicetable/mint.svg',
-      '/assets/Body/gridicetable/chocolate.svg',
-      '/assets/Body/gridicetable/honey.svg',
-      '/assets/Body/gridicetable/mint.svg',
-      '/assets/Body/gridicetable/chocolate.svg',
-      '/assets/Body/gridicetable/honey.svg',
-      '/assets/Body/gridicetable/mint.svg',
-      '/assets/Body/gridicetable/chocolate.svg',
-      '/assets/Body/gridicetable/honey.svg',
-      '/assets/Body/gridicetable/mint.svg'
+      '/Spaguletti_IceCream/assets/Body/gridicetable/chocolate.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/honey.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/mint.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/chocolate.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/honey.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/mint.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/chocolate.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/honey.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/mint.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/chocolate.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/honey.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/mint.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/chocolate.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/honey.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/mint.svg'
     ]
     let onIntersectionObserverIceCups = ([{ isIntersecting }]: any) => {
       if (isIntersecting) {
@@ -251,7 +245,11 @@ export default defineComponent({
 
     let HandlePageLoaded = () => {
       setTimeout(() => {
-        ShowLoadingScreen.value = false
+        let screenWidth = window.innerWidth
+        let screenHeight = window.innerHeight
+        if (screenWidth > 500) {
+          return
+        } else ShowLoadingScreen.value = false
       }, 2500)
     }
     onMounted(() => {
@@ -589,6 +587,7 @@ export default defineComponent({
     width: 100%;
     height: 100px;
     display: block;
+    left: -20%;
   }
   .Storysection {
     background: url(@/assets/Body/bits-bg3.svg) no-repeat 50%;
@@ -660,15 +659,14 @@ export default defineComponent({
     margin: auto;
     width: fit-content;
   }
-  .socialmedia-icons{
+  .socialmedia-icons {
     display: flex;
     gap: 20px;
     margin-top: 10px;
     justify-content: center;
-
   }
-  .socialmedia-icons>img{
-max-width: 30px;
+  .socialmedia-icons > img {
+    max-width: 30px;
   }
   .getintouch-form {
     width: 100%;
