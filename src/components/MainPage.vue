@@ -344,6 +344,7 @@ export default defineComponent({
     top: 0;
     z-index: 100;
     font-family: 'Anton', sans-serif;
+    cursor: pointer;
   }
   footer {
     width: 100%;
@@ -579,7 +580,7 @@ export default defineComponent({
     transform: scaleX(-1);
   }
   .Storysection::after {
-    transform: rotate(-180deg) scale(1.5);
+    transform: rotate(-180deg) scale(1.7);
     content: '';
     background-image: url(@/assets/Body/scoops-separator.svg);
     background-repeat: no-repeat;
