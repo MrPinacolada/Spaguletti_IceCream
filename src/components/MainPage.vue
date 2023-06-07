@@ -210,21 +210,21 @@ export default defineComponent({
     let mesMessage = ref()
     let iceCreamFlavorsinView = ref()
     let flavours = [
-      'src/assets/Body/gridicetable/chocolate.svg',
-      'src/assets/Body/gridicetable/honey.svg',
-      'src/assets/Body/gridicetable/mint.svg',
-      'src/assets/Body/gridicetable/chocolate.svg',
-      'src/assets/Body/gridicetable/honey.svg',
-      'src/assets/Body/gridicetable/mint.svg',
-      'src/assets/Body/gridicetable/chocolate.svg',
-      'src/assets/Body/gridicetable/honey.svg',
-      'src/assets/Body/gridicetable/mint.svg',
-      'src/assets/Body/gridicetable/chocolate.svg',
-      'src/assets/Body/gridicetable/honey.svg',
-      'src/assets/Body/gridicetable/mint.svg',
-      'src/assets/Body/gridicetable/chocolate.svg',
-      'src/assets/Body/gridicetable/honey.svg',
-      'src/assets/Body/gridicetable/mint.svg'
+      '/Spaguletti_IceCream/assets/Body/gridicetable/chocolate.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/honey.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/mint.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/chocolate.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/honey.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/mint.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/chocolate.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/honey.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/mint.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/chocolate.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/honey.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/mint.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/chocolate.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/honey.svg',
+      '/Spaguletti_IceCream/assets/Body/gridicetable/mint.svg'
     ]
     let onIntersectionObserverIceCups = ([{ isIntersecting }]: any) => {
       if (isIntersecting) {
