@@ -10,7 +10,7 @@
       autoplay
     ></lottie-player>
   </div>
-  <div class="bodyContainer" v-show="!ShowLoadingScreen">
+  <div class="bodyContainer animate__animated animate__fadeIn" v-show="!ShowLoadingScreen">
     <header>
       <div class="HeaderContainer animate__animated animate__slideInDown">
         <h2 id="Spaguletti" @click="scrollIntoView('betweenContainer')">SPAGULETTI</h2>
@@ -20,11 +20,11 @@
         <span id="lastSpanHeader" @click="scrollIntoView('getintouch')">CONTACT US</span>
       </div>
     </header>
-    <div class="betweenContainer animate__animated animate__slideInDown">
+    <div class="betweenContainer">
       <img id="SPlogo" src="@/assets/Header/fotor_2023-6-5_16_4_7.png" alt="Spaguletti LOGO" />
     </div>
     <div class="scoop-scoop"></div>
-    <main class="pageContainer animate__animated animate__slideInUp">
+    <main class="pageContainer">
       <section>
         <div class="AboutUSWrapper">
           <div class="AboutUS">
@@ -42,7 +42,10 @@
       <section>
         <div class="shopsWrapper">
           <div class="shopsicecream">
-            <img src="@/assets/Body/288870800_561000605625699_2838917795971859607_n.jpg" alt="" />
+            <img
+              src="@/assets/Body/ShopsPlace/288870800_561000605625699_2838917795971859607_n.jpg"
+              alt=""
+            />
             <p>
               Lorem ipsum dolor ctr amet consectetur adipisicing elit. <br />
               Opening times: <br />
@@ -65,11 +68,21 @@
 
           <a href="/" target="_blank" class="shopButt menuShopButt">download our menu</a>
           <swiper :pagination="true" :modules="modules">
-            <swiper-slide><img src="@/assets/Body/116708427.jpg" alt="" /></swiper-slide>
-            <swiper-slide><img src="@/assets/Body/119452030.jpg" alt="" /></swiper-slide>
-            <swiper-slide><img src="@/assets/Body/120779949.jpg" alt="" /></swiper-slide>
-            <swiper-slide><img src="@/assets/Body/116708427.jpg" alt="" /></swiper-slide>
-            <swiper-slide><img src="@/assets/Body/116708427.jpg" alt="" /></swiper-slide>
+            <swiper-slide
+              ><img src="@/assets/Body/StorySwiper/116708427.jpg" alt=""
+            /></swiper-slide>
+            <swiper-slide
+              ><img src="@/assets/Body/StorySwiper/119452030.jpg" alt=""
+            /></swiper-slide>
+            <swiper-slide
+              ><img src="@/assets/Body/StorySwiper/120779949.jpg" alt=""
+            /></swiper-slide>
+            <swiper-slide
+              ><img src="@/assets/Body/StorySwiper/116708427.jpg" alt=""
+            /></swiper-slide>
+            <swiper-slide
+              ><img src="@/assets/Body/StorySwiper/116708427.jpg" alt=""
+            /></swiper-slide>
           </swiper>
         </div>
       </section>
@@ -115,14 +128,14 @@
           </p>
           <p>Lorem ipsum dolor sit amet. <br /><strong>Lorem, ipsum dolor.</strong></p>
           <div class="storyContainer">
-            <img src="@/assets/Body/1992story.png" alt="" />
+            <img src="@/assets/Body/OurStory/1992story.png" alt="" />
             <span class="storybox storyboxgreen"
               ><p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. A earum recusandae atque
                 voluptate quo cum deleniti delectus vitae minus architecto!
               </p></span
             >
-            <img src="@/assets/Body/1992story.png" alt="" />
+            <img src="@/assets/Body/OurStory/1992story.png" alt="" />
             <span class="storybox storyboxpurple"
               ><p>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. A earum recusandae atque
@@ -130,7 +143,7 @@
               </p></span
             >
             <img
-              src="@/assets/Body/1992story.png"
+              src="@/assets/Body/OurStory/1992story.png"
               v-intersection-observer="onIntersectionObserverArrows"
               alt=""
             />
@@ -150,11 +163,25 @@
           <p>Give us a tweet, check out our latest updates</p>
           <p>or send us a message below</p>
           <div class="socialmedia-icons">
-            <img src="@/assets/Body/instagram_logo_icon.svg" alt="" />
-            <img src="@/assets/Body/whatsapp_logo_icon.svg" alt="" />
-            <img src="@/assets/Body/twitter_logo_icon.svg" alt="" />
+            <img src="@/assets/Body/Socialicons/instagram_logo_icon.svg" alt="" />
+            <img src="@/assets/Body/Socialicons/whatsapp_logo_icon.svg" alt="" />
+            <img src="@/assets/Body/Socialicons/twitter_logo_icon.svg" alt="" />
           </div>
-          <form class="getintouch-form">
+          <!-- <div class="sentHandler" v-if="handleMessageSent"> -->
+            <lottie-player
+            v-if="handleMessageSent"
+              src="https://assets5.lottiefiles.com/private_files/lf30_nsqfzxxx.json"
+              background="transparent"
+              speed="1"
+              style="width: 200px; height: 200px;margin: auto;"
+              autoplay
+            ></lottie-player>
+          <!-- </div> -->
+          <form
+            v-if="!handleMessageSent"
+            @submit.prevent="handleSendMessage"
+            class="getintouch-form"
+          >
             <input required v-model="mesName" type="text" placeholder="Your name" />
             <input required v-model="mesEmail" type="email" placeholder="Your email address" />
             <textarea
@@ -165,7 +192,7 @@
               rows="10"
             ></textarea
             ><br />
-            <button @click="handleSendMessage" class="shopButt">Send</button>
+            <button class="shopButt">Send</button>
           </form>
         </div>
       </section>
@@ -203,6 +230,7 @@ export default defineComponent({
     let mesEmail = ref()
     let mesMessage = ref()
     let iceCreamFlavorsinView = ref()
+    let handleMessageSent = ref(false)
     let flavours = [
       '/Spaguletti_IceCream/assets/chocolate.svg',
       '/Spaguletti_IceCream/assets/honey.svg',
@@ -223,7 +251,7 @@ export default defineComponent({
     let onIntersectionObserverIceCups = ([{ isIntersecting }]: any) => {
       if (isIntersecting) {
         iceCreamFlavorsinView.value = 'animate__animated animate__flipInY'
-      } else iceCreamFlavorsinView.value = ''
+      }
     }
     let onIntersectionObserverArrows = ([{ isIntersecting }]: any) => {
       if (isIntersecting) {
@@ -237,16 +265,16 @@ export default defineComponent({
     let handleSendMessage = () => {
       let message = {
         username: mesName.value,
-        useremail: mesEmail,
-        usermessage: mesMessage
+        useremail: mesEmail.value,
+        usermessage: mesMessage.value
       }
+      handleMessageSent.value = true
       console.log(message)
     }
 
     let HandlePageLoaded = () => {
+      let screenWidth = window.innerWidth
       setTimeout(() => {
-        let screenWidth = window.innerWidth
-        let screenHeight = window.innerHeight
         if (screenWidth > 500) {
           return
         } else ShowLoadingScreen.value = false
@@ -267,7 +295,8 @@ export default defineComponent({
       mesName,
       mesEmail,
       mesMessage,
-      handleSendMessage
+      handleSendMessage,
+      handleMessageSent
     }
   }
 })
@@ -388,7 +417,7 @@ export default defineComponent({
   }
   .betweenContainer::before {
     content: '';
-    background-image: url(@/assets/Body/309856059.jpg);
+    background-image: url(@/assets/Header/309856059.jpg);
     background-position: center center;
     background-size: cover;
     width: 100%;
@@ -412,48 +441,37 @@ export default defineComponent({
   .scoop-scoop {
     transform: scale(4) rotate(7deg);
     content: '';
-    background: url(@/assets/Body/scoops-separator.svg) no-repeat 50%;
+    background: url(@/assets/Body/backs/scoops-separator.svg) no-repeat 50%;
     width: 100%;
     height: 44px;
     z-index: 15;
     position: relative;
-    animation: slide-in-top 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  }
-  @keyframes slide-in-top {
-    0% {
-      /* transform: translateY(-1000px); */
-      opacity: 0;
-    }
-    100% {
-      transform: scale(4) rotate(7deg);
-      opacity: 1;
-    }
   }
 
-  .AboutUS > p {
-    padding-top: 90px;
-  }
   .AboutUS {
-    /* display: grid; */
     margin: auto;
     text-align: center;
     width: 90%;
     height: 300px;
     margin-top: -20px;
+    padding-top: 70px;
     color: white;
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1.4;
     letter-spacing: 1px;
     font-family: 'Roboto', sans-serif;
+    display: grid;
+    align-items: center;
   }
   .AboutUSWrapper {
     width: 100%;
     height: fit-content;
-    background-color: #45eec4;
+    background: url(@/assets/Body/backs/bits-bg4.svg) no-repeat 50%;
+    background-position: center center;
   }
   .shopsWrapper {
     padding-bottom: 25px;
-    background: url(@/assets/Body/bits-bg.svg) no-repeat 50%;
+    background: url(@/assets/Body/backs/bits-bg.svg) no-repeat 50%;
     background-position: center center;
     background-size: cover;
     position: relative;
@@ -466,23 +484,13 @@ export default defineComponent({
   }
   .shopsWrapper::before {
     content: '';
-    background-image: url(@/assets/Body/wavy-top.svg);
+    background-image: url(@/assets/Body/backs/wavy-top.svg);
     width: 100%;
     background-repeat: no-repeat;
     height: 100px;
     position: absolute;
     top: -4%;
   }
-  /* .shopsWrapper::after {
-    transform: rotate(-180deg) scale(1.5);
-    content: '';
-    background-image: url(/Spaguletti_IceCream/src/assets/Body/scoops-separator.svg);
-    background-repeat: no-repeat;
-    position: relative;
-    top: 20px;
-    width: 100%;
-    height: 100px;
-  } */
   .shopsicecream {
     width: 80%;
     height: fit-content;
@@ -525,10 +533,10 @@ export default defineComponent({
     transition: background-color 0.3s ease, opacity 0.3s ease;
   }
   .mapShopButt {
-    background-image: url(@/assets/Body/marker.svg);
+    background-image: url(@/assets/Body/Buttimg/marker.svg);
   }
   .menuShopButt {
-    background-image: url(@/assets/Body/arrow.svg);
+    background-image: url(@/assets/Body/Buttimg/arrow.svg);
   }
 
   .flavours {
@@ -565,22 +573,22 @@ export default defineComponent({
     position: relative;
   }
   .flavoursection::before {
-    background-image: url(@/assets/Body/wavy-top2.svg);
+    background-image: url(@/assets/Body/backs/wavy-top2.svg);
   }
 
   .flavoursection {
-    background: url(@/assets/Body/bits-bg2.svg) no-repeat 50%;
+    background: url(@/assets/Body/backs/bits-bg2.svg) no-repeat 50%;
     padding-bottom: 50px;
   }
   .Storysection::before {
-    background-image: url(@/assets/Body/wavy-top3.svg);
+    background-image: url(@/assets/Body/backs/wavy-top3.svg);
     top: -2%;
     transform: scaleX(-1);
   }
   .Storysection::after {
     transform: rotate(-180deg) scale(1.7);
     content: '';
-    background-image: url(@/assets/Body/scoops-separator.svg);
+    background-image: url(@/assets/Body/backs/scoops-separator.svg);
     background-repeat: no-repeat;
     position: relative;
     top: 20px;
@@ -590,7 +598,7 @@ export default defineComponent({
     left: -20%;
   }
   .Storysection {
-    background: url(@/assets/Body/bits-bg3.svg) no-repeat 50%;
+    background: url(@/assets/Body/backs/bits-bg3.svg) no-repeat 50%;
     position: relative;
   }
   .ourStory {
