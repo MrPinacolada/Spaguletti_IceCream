@@ -5,7 +5,6 @@ import App from './App.vue'
 import router from './router'
 
 const app = createApp(App)
-app.config.globalProperties.$meta().remove('Permissions-Policy')
 app.use(createPinia())
 app.use(router)
 app.directive('intersection-observer', vIntersectionObserver)

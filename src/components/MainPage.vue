@@ -1,6 +1,12 @@
 <template>
-  <div v-show="ShowLoadingScreen" class="backGroung"></div>
-  <div class="iceCreamContainer" v-show="ShowLoadingScreen">
+  <div class="notSupportedSize" v-if="ShowLoadingScreen && screensizeerror">
+    <h1>
+      This app isn't support your screen size yet. Please, reduse your screen-size to 500px width or
+      less.
+    </h1>
+  </div>
+  <div v-show="ShowLoadingScreen && !screensizeerror" class="backGroung"></div>
+  <div class="iceCreamContainer" v-show="ShowLoadingScreen && !screensizeerror">
     <lottie-player
       src="https://assets6.lottiefiles.com/private_files/lf30_t8nkvzcj.json"
       background="transparent"
@@ -168,14 +174,14 @@
             <img src="@/assets/Body/Socialicons/twitter_logo_icon.svg" alt="" />
           </div>
           <!-- <div class="sentHandler" v-if="handleMessageSent"> -->
-            <lottie-player
+          <lottie-player
             v-if="handleMessageSent"
-              src="https://assets5.lottiefiles.com/private_files/lf30_nsqfzxxx.json"
-              background="transparent"
-              speed="1"
-              style="width: 200px; height: 200px;margin: auto;"
-              autoplay
-            ></lottie-player>
+            src="https://assets5.lottiefiles.com/private_files/lf30_nsqfzxxx.json"
+            background="transparent"
+            speed="1"
+            style="width: 200px; height: 200px; margin: auto"
+            autoplay
+          ></lottie-player>
           <!-- </div> -->
           <form
             v-if="!handleMessageSent"
@@ -231,6 +237,8 @@ export default defineComponent({
     let mesMessage = ref()
     let iceCreamFlavorsinView = ref()
     let handleMessageSent = ref(false)
+    let screensizeerror = ref(false)
+    let screenWidth = ref(window.innerWidth)
     let flavours = [
       '/Spaguletti_IceCream/assets/chocolate.svg',
       '/Spaguletti_IceCream/assets/honey.svg',
@@ -273,16 +281,19 @@ export default defineComponent({
     }
 
     let HandlePageLoaded = () => {
-      let screenWidth = window.innerWidth
       setTimeout(() => {
-        if (screenWidth > 500) {
+        if (screenWidth.value > 500) {
+          screensizeerror.value = true
           return
-        } else ShowLoadingScreen.value = false
+        } else {
+          ShowLoadingScreen.value = false
+        }
       }, 2500)
     }
     onMounted(() => {
       HandlePageLoaded()
     })
+   
     return {
       ShowLoadingScreen,
       modules: [Pagination],
@@ -296,7 +307,7 @@ export default defineComponent({
       mesEmail,
       mesMessage,
       handleSendMessage,
-      handleMessageSent
+      handleMessageSent,screensizeerror
     }
   }
 })
@@ -708,5 +719,15 @@ export default defineComponent({
   background-position: center center;
   background-size: cover;
   animation: borderadius 2s ease-in-out;
+}
+.notSupportedSize {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+}
+.notSupportedSize > h1 {
+  margin: auto;
+  text-align: center;
 }
 </style>
