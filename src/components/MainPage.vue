@@ -293,7 +293,7 @@ export default defineComponent({
     onMounted(() => {
       HandlePageLoaded()
     })
-   
+
     return {
       ShowLoadingScreen,
       modules: [Pagination],
@@ -307,7 +307,8 @@ export default defineComponent({
       mesEmail,
       mesMessage,
       handleSendMessage,
-      handleMessageSent,screensizeerror
+      handleMessageSent,
+      screensizeerror
     }
   }
 })
